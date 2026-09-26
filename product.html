@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Product details">
+  <title>Product — ROVMART </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+
+  <a class="brand" href="index.html">
+    ROVMART<span>.</span>
+  </a>
+
+  <div class="header-actions">
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-label="Open categories"
+      aria-expanded="false"
+      aria-controls="categoryMenu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <button
+      class="cart-link"
+      id="cartLink"
+      type="button"
+      aria-label="Open cart"
+    >
+      Cart <span id="headerCartCount">0</span>
+    </button>
+
+  </div>
+
+</header>
+
+<div
+  id="categoryOverlay"
+  class="category-overlay hidden">
+</div>
+
+<aside
+  id="categoryMenu"
+  class="category-menu"
+  aria-hidden="true"
+  aria-label="Product categories"
+>
+
+  <div class="category-menu-head">
+
+    <div>
+      <p class="eyebrow">
+        BROWSE / COLLECTION
+      </p>
+
+      <h2>
+        Categories<span>.</span>
+      </h2>
+    </div>
+
+    <button
+      class="icon-button"
+      id="closeMenuBtn"
+      type="button"
+      aria-label="Close categories"
+    >
+      ×
+    </button>
+
+  </div>
+
+  <div
+    id="categoryList"
+    class="category-list">
+  </div>
+
+</aside>
+
+  <main class="detail-page">
+    <a class="back-link" href="index.html#shop">← Back to collection</a>
+    <section id="productDetail" class="product-detail reveal"></section>
+  </main>
+  <div id="cursorDot" class="cursor-dot" aria-hidden="true"></div>
+
+  <div id="floatingCart" class="floating-cart hidden">
+    <div>
+      <strong><span id="floatingQuantity">0</span> item(s)</strong>
+      <span class="floating-total" id="floatingTotal">৳0</span>
+    </div>
+    <button class="button button-light" id="confirmOrderBtn" type="button">Confirm order</button>
+  </div>
+
+  <div id="cartDrawer" class="drawer-backdrop hidden" aria-hidden="true">
+    <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="drawer-head">
+        <h2 id="cartTitle">Your cart</h2>
+        <button class="icon-button" id="closeCartBtn" type="button">×</button>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="drawer-footer">
+        <div class="summary-row"><span>Total</span><strong id="drawerTotal">৳0</strong></div>
+        <button class="button button-dark full" id="drawerConfirmBtn" type="button">Confirm order</button>
+      </div>
+    </aside>
+  </div>
+
+  <div id="orderModal" class="modal-backdrop hidden" aria-hidden="true">
+    <section class="order-modal" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+      <button class="modal-close icon-button" id="closeOrderBtn" type="button">×</button>
+      <div id="orderContent">
+        <p class="eyebrow">CHECKOUT</p>
+        <h2 id="orderTitle">Complete your order</h2>
+        <div id="orderSummary" class="order-summary"></div>
+        <form id="orderForm" novalidate>
+          <div class="field">
+            <label for="customerName">Full name *</label>
+            <input id="customerName" name="customerName" autocomplete="name" required>
+            <small class="error" id="customerNameError"></small>
+          </div>
+          <div class="field">
+            <label for="phone">Phone number *</label>
+            <input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX" required>
+            <small class="error" id="phoneError"></small>
+          </div>
+          <div class="field">
+            <label for="address">Delivery address *</label>
+            <textarea id="address" name="address" rows="4" autocomplete="street-address" required></textarea>
+            <small class="error" id="addressError"></small>
+          </div>
+          <!-- CASH ON DELIVERY -->
+<div class="delivery-section">
+
+  <div class="delivery-heading">
+    <span class="eyebrow">PAYMENT & DELIVERY</span>
+    <h3>Cash on delivery</h3>
+    <p>Select your delivery area.</p>
+  </div>
+
+  <div class="delivery-options">
+
+    <label class="delivery-option">
+      <input
+        type="radio"
+        name="deliveryArea"
+        value="inside"
+        data-charge="50"
+        required
+      >
+
+      <span class="delivery-checkbox"></span>
+
+      <span class="delivery-option-content">
+        <strong>Inside Dhaka</strong>
+        <small>Delivery charge ৳50</small>
+      </span>
+
+      <span class="delivery-charge">
+        ৳50
+      </span>
+    </label>
+
+
+    <label class="delivery-option">
+      <input
+        type="radio"
+        name="deliveryArea"
+        value="outside"
+        data-charge="100"
+      >
+
+      <span class="delivery-checkbox"></span>
+
+      <span class="delivery-option-content">
+        <strong>Outside Dhaka</strong>
+        <small>Delivery charge ৳100</small>
+      </span>
+
+      <span class="delivery-charge">
+        ৳100
+      </span>
+    </label>
+
+  </div>
+
+  <p
+    class="error"
+    id="deliveryAreaError">
+  </p>
+
+</div>
+          <div class="field">
+            <label for="note">Additional note <span>(optional)</span></label>
+            <textarea id="note" name="note" rows="2"></textarea>
+          </div>
+          <button class="button button-dark full" id="submitOrderBtn" type="submit">Submit order</button>
+          <p id="formMessage" class="form-message" role="alert"></p>
+        </form>
+      </div>
+    </section>
+  </div>
+
+
+    <footer class="site-footer"> 
+    <div class="footer-main"> 
+    <div class="footer-brand"> 
+    <a href="index.html" class="footer-logo">ROVMART<span>.</span></a> 
+    <p> Contemporary fashion, thoughtfully selected for modern everyday living. </p> 
+    </div> 
+    <div class="footer-column"> <span class="footer-label">VISIT</span>
+       <p>Joydevpur, Gazipur</p> </div> 
+       <div class="footer-column"> <span class="footer-label">CONNECT</span> 
+        <a href="https://w.wpp/rovedge" target="_blank" rel="noopener noreferrer"> WhatsApp: w.wpp/rovedge </a> 
+        <a href="mailto:rovmart@gmail.com"> rovmart@gmail.com </a> </div> </div> 
+        <div class="footer-bottom"> <span>2026 | © Rovedge Group</span> 
+          <span>ALL RIGHTS RESERVED</span> </div> 
+  </footer>
+
+<iframe
+  name="orderSubmitFrame"
+  id="orderSubmitFrame"
+  title="Order submission"
+  class="order-submit-frame"
+  aria-hidden="true"
+></iframe>
+
+  <script src="config.js"></script>
+  <script src="products.js"></script>
+  <script src="cart.js"></script>
+  <script src="order.js"></script>
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderProductDetail();
+    });
+  </script>
+</body>
+</html>
